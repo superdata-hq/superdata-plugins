@@ -1,5 +1,5 @@
 # Security
 
-Do not report vulnerabilities in public issues. Email security@superdata.so with reproduction steps and impact.
+Report security concerns privately to `security@superdata.so` with reproduction steps and impact.
 
-This repository contains public plugin metadata and assets only. Never commit credentials or customer data.
+Do not include credentials, OAuth tokens, customer information, private service details, or intelligence results in a public issue. This repository contains public plugin metadata and assets only; installing it does not grant access to an unapproved Superdata account.

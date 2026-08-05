@@ -1,13 +1,42 @@
-name: Validate plugin package
+name: Plugin checks
 
-on: [push, pull_request]
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
 
 jobs:
   validate:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+
       - uses: actions/setup-node@v4
         with:
-          node-version: 22
-      - run: npm test
+          node-version: "22"
+
+      - name: Validate public snapshot
+        run: npm test
+
+      - name: Install client CLIs
+        run: |
+          npm install --global @openai/codex@0.146.0
+          npm install --global @anthropic-ai/claude-code@2.1.220
+
+      - name: Validate Claude plugin schema
+        run: claude plugin validate .
+
+      - name: Clean Codex installation
+        run: |
+          codex plugin marketplace add "$GITHUB_WORKSPACE" --json
+          codex plugin add superdata@superdata --json
+          codex plugin list --json
+
+      - name: Clean Claude installation
+        run: |
+          claude plugin marketplace add "$GITHUB_WORKSPACE"
+          claude plugin install superdata@superdata
+          claude plugin details superdata@superdata

@@ -4,24 +4,30 @@
   "description": "Search Superdata's hosted MCP for qualified people and companies.",
   "author": {
     "name": "Superdata",
+    "email": "hey@superdata.so",
     "url": "https://superdata.so"
   },
   "homepage": "https://superdata.so",
   "repository": "https://github.com/superdata-hq/superdata-plugins",
+  "keywords": ["b2b-data", "company-intelligence", "people-intelligence", "prospecting", "enrichment"],
   "skills": "./skills/",
   "mcpServers": "./.mcp.json",
   "interface": {
     "displayName": "Superdata",
-    "shortDescription": "Find qualified people and companies",
-    "longDescription": "Use Superdata's authenticated read-only hosted MCP to find professional profiles and companies with explicit structured filters.",
+    "shortDescription": "Private B2B intelligence in Codex.",
+    "longDescription": "Connect an approved Superdata account to authenticated, read-only company and professional-profile intelligence with explicit structured filters and browser-based OAuth.",
     "developerName": "Superdata",
     "category": "Productivity",
-    "capabilities": ["People search", "Business contact enrichment", "Company search", "Read-only"],
+    "capabilities": ["MCP"],
+    "websiteURL": "https://superdata.so",
+    "privacyPolicyURL": "https://superdata.so/privacy",
+    "termsOfServiceURL": "https://superdata.so/terms",
     "brandColor": "#FF4F2D",
     "composerIcon": "./assets/icon.png",
     "logo": "./assets/icon.png",
     "screenshots": ["./assets/screenshot-pipeline.png"],
     "defaultPrompt": [
+      "Explain what Superdata can research and which filters I should provide.",
       "Find 25 VP Sales leaders at US SaaS companies.",
       "Find fintech companies with 200 to 1,000 employees."
     ]

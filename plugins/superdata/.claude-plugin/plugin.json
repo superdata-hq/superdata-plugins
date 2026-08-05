@@ -4,9 +4,19 @@
   "description": "Search Superdata's hosted MCP for qualified people and companies.",
   "author": {
     "name": "Superdata",
+    "email": "hey@superdata.so",
     "url": "https://superdata.so"
   },
   "homepage": "https://superdata.so",
   "repository": "https://github.com/superdata-hq/superdata-plugins",
-  "mcpServers": "./.mcp.json"
+  "keywords": ["b2b-data", "company-intelligence", "people-intelligence", "prospecting", "enrichment"],
+  "mcpServers": {
+    "superdata": {
+      "type": "http",
+      "url": "https://api.superdata.so/mcp",
+      "headers": {
+        "x-superdata-client": "Claude"
+      }
+    }
+  }
 }
