@@ -1,0 +1,12 @@
+{
+  "name": "superdata",
+  "version": "1.0.0",
+  "description": "Search Superdata's hosted MCP for qualified people and companies.",
+  "author": {
+    "name": "Superdata",
+    "url": "https://superdata.so"
+  },
+  "homepage": "https://superdata.so",
+  "repository": "https://github.com/superdata-hq/superdata-plugins",
+  "mcpServers": "./.mcp.json"
+}

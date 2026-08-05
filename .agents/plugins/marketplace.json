@@ -1,0 +1,20 @@
+{
+  "name": "superdata",
+  "interface": {
+    "displayName": "Superdata"
+  },
+  "plugins": [
+    {
+      "name": "superdata",
+      "source": {
+        "source": "local",
+        "path": "./plugins/superdata"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity"
+    }
+  ]
+}

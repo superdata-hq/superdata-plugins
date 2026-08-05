@@ -1,0 +1,29 @@
+{
+  "name": "superdata",
+  "version": "1.0.0",
+  "description": "Search Superdata's hosted MCP for qualified people and companies.",
+  "author": {
+    "name": "Superdata",
+    "url": "https://superdata.so"
+  },
+  "homepage": "https://superdata.so",
+  "repository": "https://github.com/superdata-hq/superdata-plugins",
+  "skills": "./skills/",
+  "mcpServers": "./.mcp.json",
+  "interface": {
+    "displayName": "Superdata",
+    "shortDescription": "Find qualified people and companies",
+    "longDescription": "Use Superdata's authenticated read-only hosted MCP to find professional profiles and companies with explicit structured filters.",
+    "developerName": "Superdata",
+    "category": "Productivity",
+    "capabilities": ["People search", "Business contact enrichment", "Company search", "Read-only"],
+    "brandColor": "#FF4F2D",
+    "composerIcon": "./assets/icon.png",
+    "logo": "./assets/icon.png",
+    "screenshots": ["./assets/screenshot-pipeline.png"],
+    "defaultPrompt": [
+      "Find 25 VP Sales leaders at US SaaS companies.",
+      "Find fintech companies with 200 to 1,000 employees."
+    ]
+  }
+}

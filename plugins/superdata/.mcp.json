@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "superdata": {
+      "type": "http",
+      "url": "https://api.superdata.so/mcp"
+    }
+  }
+}

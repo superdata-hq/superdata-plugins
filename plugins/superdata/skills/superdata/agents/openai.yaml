@@ -1,0 +1,4 @@
+interface:
+  display_name: "Superdata"
+  short_description: "Research people and companies with Superdata"
+  default_prompt: "Use Superdata to find qualified people or companies with explicit filters."

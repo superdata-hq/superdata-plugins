@@ -1,0 +1,16 @@
+{
+  "name": "superdata",
+  "owner": {
+    "name": "Superdata"
+  },
+  "description": "B2B company and people intelligence for Claude and Codex.",
+  "plugins": [
+    {
+      "name": "superdata",
+      "source": "./plugins/superdata",
+      "description": "Research companies and qualified people through Superdata's hosted MCP tools.",
+      "version": "1.0.0",
+      "category": "Productivity"
+    }
+  ]
+}
