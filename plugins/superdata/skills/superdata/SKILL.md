@@ -13,7 +13,7 @@ Complete the requested research; do not impose an artificial call, provider, or 
 
 1. Translate the request into entity, geography, industry, employee range, role/title, skill, time range, and result-count filters. Ask one concise question only when a missing filter materially changes the target.
 2. Resolve named companies with `superdata_search_companies` or `superdata_match_company`, then reuse each canonical company ID and name.
-3. For people at a known employer, prefer `superdata_find_company_people` with `companyName` plus optional `title`, `skill`, and `countryCode`. Run it once per relevant company when the request spans multiple employers. Use `superdata_search_people` for broad keyword discovery, and verify current company/title before including a person.
+3. For people at a known employer, prefer `superdata_find_company_people` with `companyName` plus optional `title`, `skill`, and `countryCode`. This workflow resolves the canonical company and present-tense taxonomy features, compiles one server-side segment, and returns compact current profiles with an exact-or-lower-bound coverage count. Run it once per relevant company when the request spans multiple employers. Use `superdata_search_people` only for broad discovery without a known employer.
 4. Use `superdata_get_company_trends` after resolving a company ID when the user asks about headcount, followers, momentum, or change over time. Use `superdata_get_company` for company details.
 5. Enrich only what the user needs. Use `superdata_get_person`, `superdata_get_linkedin_profile`, or company tools to fill material gaps. Use `superdata_reveal_work_email` only when contact data is explicitly requested.
 6. For funding, jobs, audiences, mobile apps, SDKs, web technologies, taxonomy, or any unfamiliar long-tail operation, call `superdata_search_capabilities`, inspect the selected operation with `superdata_get_capability`, then execute it with `superdata_call`. These three progressive tools preserve access to the full provider catalog.
@@ -21,6 +21,8 @@ Complete the requested research; do not impose an artificial call, provider, or 
 8. Present a concise Markdown table. Optionally call `superdata_render_people_results`, `superdata_render_company_results`, `superdata_render_jobs_results`, or `superdata_render_company_brief`; presentation is free and the text response must remain complete.
 
 Do not spend a credit on an exploratory execution when metadata discovery can select the operation. Discovery and presentation do not consume credits. Failed upstream executions are refunded.
+
+For multi-company people research, use bounded parallel batches rather than launching every company simultaneously. Treat `VP` and `Vice President` as title variants when needed, but never silently broaden away from the requested seniority. Reuse canonical company names and IDs, and do not replace structured current-employment filters with a joined keyword string.
 
 ## Results
 

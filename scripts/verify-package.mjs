@@ -46,7 +46,7 @@ assert(claudeCatalog.plugins[0]?.source === "./plugins/superdata", "Claude plugi
 assert(codexManifest.name === "superdata", "Unexpected Codex plugin name");
 assert(claudeManifest.name === "superdata", "Unexpected Claude plugin name");
 assert(codexManifest.version === claudeManifest.version, "Plugin versions must match");
-assert(codexManifest.version === "4.0.0", "Workflow-tool release must be version 4.0.0");
+assert(codexManifest.version === "5.0.0", "Structured-workflow release must be version 5.0.0");
 assert(packageManifest.version === codexManifest.version, "Package and plugin versions must match");
 assert(claudeCatalog.plugins[0]?.version === claudeManifest.version, "Claude marketplace version must match");
 assert(codexManifest.repository === repository, "Codex repository is wrong");
