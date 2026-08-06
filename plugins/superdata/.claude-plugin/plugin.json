@@ -1,7 +1,7 @@
 {
   "name": "superdata",
-  "version": "1.0.0",
-  "description": "Search Superdata's hosted MCP for qualified people and companies.",
+  "version": "2.0.0",
+  "description": "Discover, inspect, and execute Superdata B2B intelligence capabilities.",
   "author": {
     "name": "Superdata",
     "email": "hey@superdata.so",

@@ -33,6 +33,7 @@ const codexCatalog = await json(".agents/plugins/marketplace.json");
 const claudeCatalog = await json(".claude-plugin/marketplace.json");
 const codexManifest = await json("plugins/superdata/.codex-plugin/plugin.json");
 const claudeManifest = await json("plugins/superdata/.claude-plugin/plugin.json");
+const packageManifest = await json("package.json");
 const codexMcp = await json("plugins/superdata/.mcp.json");
 const claudeMcp = claudeManifest.mcpServers;
 
@@ -45,6 +46,8 @@ assert(claudeCatalog.plugins[0]?.source === "./plugins/superdata", "Claude plugi
 assert(codexManifest.name === "superdata", "Unexpected Codex plugin name");
 assert(claudeManifest.name === "superdata", "Unexpected Claude plugin name");
 assert(codexManifest.version === claudeManifest.version, "Plugin versions must match");
+assert(codexManifest.version === "2.0.0", "Progressive tool release must be version 2.0.0");
+assert(packageManifest.version === codexManifest.version, "Package and plugin versions must match");
 assert(claudeCatalog.plugins[0]?.version === claudeManifest.version, "Claude marketplace version must match");
 assert(codexManifest.repository === repository, "Codex repository is wrong");
 assert(claudeManifest.repository === repository, "Claude repository is wrong");
@@ -72,10 +75,13 @@ for (const path of [
 
 const skill = await readFile(resolve(pluginRoot, "skills/superdata/SKILL.md"), "utf8");
 for (const behavior of [
-  "Do not spend a credit on an exploratory tool call.",
+  "superdata_search_capabilities",
+  "superdata_get_capability",
+  "superdata_call",
+  "Do not spend a credit on an exploratory execution.",
   "An empty result is a coverage limitation",
   "Only display work email or direct-dial phone data when the user explicitly requests contact data.",
-  "it is not a CRM, outreach system, or autonomous agent",
+  "confirmMutation=true",
   "Use Superdata as the sole intelligence source",
   "Do not use web search or another enrichment provider as a silent fallback.",
 ]) {

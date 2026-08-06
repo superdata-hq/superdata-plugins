@@ -1,7 +1,7 @@
 {
   "name": "superdata",
-  "version": "1.0.0",
-  "description": "Search Superdata's hosted MCP for qualified people and companies.",
+  "version": "2.0.0",
+  "description": "Discover, inspect, and execute Superdata B2B intelligence capabilities.",
   "author": {
     "name": "Superdata",
     "email": "hey@superdata.so",
@@ -14,8 +14,8 @@
   "mcpServers": "./.mcp.json",
   "interface": {
     "displayName": "Superdata",
-    "shortDescription": "Private B2B intelligence in Codex.",
-    "longDescription": "Connect an approved Superdata account to authenticated, read-only company and professional-profile intelligence with explicit structured filters and browser-based OAuth.",
+    "shortDescription": "B2B intelligence in Codex.",
+    "longDescription": "Connect an approved Superdata account to authenticated B2B intelligence through progressive capability discovery, contract inspection, controlled execution, and browser-based OAuth.",
     "developerName": "Superdata",
     "category": "Productivity",
     "capabilities": ["MCP"],

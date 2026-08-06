@@ -1,6 +1,6 @@
 # Superdata plugin
 
-Superdata brings authenticated, read-only B2B company and professional-profile intelligence into Codex and Claude. The plugin contains the hosted MCP connection and Superdata routing guidance; it contains no backend service code, customer credentials, OAuth tokens, provider credentials, or intelligence data.
+Superdata brings authenticated B2B intelligence into Codex and Claude. The plugin contains the hosted MCP connection and routing guidance; it contains no backend code, customer credentials, OAuth tokens, provider credentials, or intelligence data.
 
 ## Start here
 
@@ -14,17 +14,11 @@ codex plugin marketplace add superdata-hq/superdata-plugins --ref main \
   && codex mcp login superdata
 ```
 
-Complete browser sign-in, fully reopen the desktop app or start a new CLI session, and ask Superdata for a focused company or people search.
+Complete browser sign-in, fully reopen the desktop app or start a new CLI session, and ask Superdata for focused research.
 
 ### Claude Desktop or Cowork
 
-Open **Customize → Plugins**, choose **Add marketplace → Add from a repository**, and paste:
-
-```text
-https://github.com/superdata-hq/superdata-plugins
-```
-
-Install Superdata, connect its connector, complete browser sign-in, and start a new chat.
+Open **Customize → Plugins**, choose **Add marketplace → Add from a repository**, paste `https://github.com/superdata-hq/superdata-plugins`, install Superdata, connect its MCP server, and start a new chat.
 
 ### Claude Code CLI
 
@@ -35,15 +29,15 @@ claude plugin marketplace add superdata-hq/superdata-plugins \
 
 Run `/reload-plugins`, open `/mcp`, connect Superdata, and use `/superdata:superdata` followed by your request.
 
-## Product behavior
+## Progressive tool workflow
 
-- `superdata_search_companies` finds companies by industry, country, and employee range.
-- `superdata_search_people` finds current professional profiles by role, location, current-company industry, and current-company size.
-- Every accepted intelligence search uses one workspace credit. Pre-execution clarification does not.
-- Provider-observed company sizes, roles, locations, and profile details are dated coverage rather than official or exhaustive records.
+- `superdata_search_capabilities` searches the complete capability catalog without consuming a credit.
+- `superdata_get_capability` inspects one exact operation contract without consuming a credit.
+- `superdata_call` executes one selected operation. A successful or no-match execution consumes one workspace credit; a failed upstream request is refunded.
+- Non-read-only operations require explicit user approval and `confirmMutation=true`.
+- Provider-observed results are dated coverage rather than official or exhaustive records.
 - Empty results are coverage limitations, not proof of absence.
-- Contact fields are displayed only when explicitly requested and unavailable values are never guessed.
-- Superdata does not send messages, update CRMs, or take action in other systems.
+- Contact fields are displayed only when explicitly requested, and unavailable values are never guessed.
 
 ## Direct MCP
 
