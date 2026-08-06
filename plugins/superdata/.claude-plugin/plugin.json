@@ -1,7 +1,7 @@
 {
   "name": "superdata",
-  "version": "3.0.0",
-  "description": "Research with direct typed Superdata tools and progressive long-tail discovery.",
+  "version": "4.0.0",
+  "description": "Research with compact Superdata workflows and progressive long-tail discovery.",
   "author": {
     "name": "Superdata",
     "email": "hey@superdata.so",

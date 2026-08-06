@@ -29,13 +29,16 @@ claude plugin marketplace add superdata-hq/superdata-plugins \
 
 Run `/reload-plugins`, open `/mcp`, connect Superdata, and use `/superdata:superdata` followed by your request.
 
-## Direct tools and progressive fallback
+## Workflow tools and progressive fallback
 
-- Typed tools cover common company, people, contact, LinkedIn, audience, job, app, SDK, web, and usage workflows directly.
-- Every remaining catalog operation is registered under a direct `superdata_*` tool name.
+- Compact typed tools cover common company, people, current-employment, company-trend, contact, and LinkedIn workflows directly.
+- `superdata_find_company_people` supports one-company-at-a-time current-role research, while `superdata_get_company_trends` returns bounded employee and follower history.
 - `superdata_search_capabilities`, `superdata_get_capability`, and `superdata_call` remain available as a progressive fallback for unfamiliar or newly released operations.
+- The progressive catalog retains every supported long-tail provider operation without loading more than one hundred raw schemas into each Codex task.
 - `superdata_render_people_results`, `superdata_render_company_results`, `superdata_render_jobs_results`, and `superdata_render_company_brief` provide interactive, non-billable result cards.
 - A successful or no-match intelligence execution consumes one workspace credit; a failed upstream request is refunded.
+- The skill does not impose an artificial call or credit ceiling: it continues with distinct, justified calls until the requested result count is reached or covered sources are exhausted.
+- OAuth requests offline access so a client that supports refresh tokens should need interactive authorization only once per installed connection.
 - Non-read-only operations require explicit user approval and `confirmMutation=true`.
 - Provider-observed results are dated coverage rather than official or exhaustive records.
 - Empty results are coverage limitations, not proof of absence.

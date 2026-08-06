@@ -46,7 +46,7 @@ assert(claudeCatalog.plugins[0]?.source === "./plugins/superdata", "Claude plugi
 assert(codexManifest.name === "superdata", "Unexpected Codex plugin name");
 assert(claudeManifest.name === "superdata", "Unexpected Claude plugin name");
 assert(codexManifest.version === claudeManifest.version, "Plugin versions must match");
-assert(codexManifest.version === "3.0.0", "Direct-tool release must be version 3.0.0");
+assert(codexManifest.version === "4.0.0", "Workflow-tool release must be version 4.0.0");
 assert(packageManifest.version === codexManifest.version, "Package and plugin versions must match");
 assert(claudeCatalog.plugins[0]?.version === claudeManifest.version, "Claude marketplace version must match");
 assert(codexManifest.repository === repository, "Codex repository is wrong");
@@ -80,10 +80,13 @@ for (const behavior of [
   "superdata_call",
   "superdata_search_people",
   "superdata_search_companies",
+  "superdata_find_company_people",
+  "superdata_get_company_trends",
   "superdata_reveal_work_email",
   "superdata_get_linkedin_profile",
   "superdata_render_people_results",
-  "Do not spend a credit on an exploratory execution.",
+  "Do not spend a credit on an exploratory execution",
+  "do not impose an artificial call, provider, or credit ceiling",
   "An empty result is a coverage limitation",
   "Only display work email or direct-dial phone data when the user explicitly requests contact data.",
   "confirmMutation=true",

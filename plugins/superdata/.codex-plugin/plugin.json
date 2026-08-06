@@ -1,7 +1,7 @@
 {
   "name": "superdata",
-  "version": "3.0.0",
-  "description": "Research with direct typed Superdata tools and progressive long-tail discovery.",
+  "version": "4.0.0",
+  "description": "Research with compact Superdata workflows and progressive long-tail discovery.",
   "author": {
     "name": "Superdata",
     "email": "hey@superdata.so",
@@ -15,7 +15,7 @@
   "interface": {
     "displayName": "Superdata",
     "shortDescription": "B2B intelligence in Codex.",
-    "longDescription": "Connect an approved Superdata account to typed company, people, contact, LinkedIn, audience, app, SDK, and web intelligence tools, interactive result cards, progressive long-tail discovery, and browser-based OAuth.",
+    "longDescription": "Connect an approved Superdata account to compact company, people, trend, contact, and LinkedIn workflows, interactive result cards, progressive access to the full provider catalog, and persistent browser-based OAuth.",
     "developerName": "Superdata",
     "category": "Productivity",
     "capabilities": ["MCP"],

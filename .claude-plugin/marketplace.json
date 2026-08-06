@@ -10,7 +10,7 @@
       "name": "superdata",
       "source": "./plugins/superdata",
       "description": "Use typed Superdata research tools, interactive results, and progressive long-tail discovery.",
-      "version": "3.0.0",
+      "version": "4.0.0",
       "category": "Productivity"
     }
   ]
