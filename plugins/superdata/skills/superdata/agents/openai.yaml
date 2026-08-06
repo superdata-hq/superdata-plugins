@@ -1,13 +1,13 @@
 interface:
   display_name: "Superdata"
-  short_description: "Research people and companies with Superdata"
-  default_prompt: "Use $superdata to research qualified people or companies using only Superdata tools unless I explicitly request another source."
+  short_description: "Run complete B2B research with Superdata"
+  default_prompt: "Use $superdata to research and qualify companies and decision makers, then enrich only the final shortlist."
 
 dependencies:
   tools:
     - type: "mcp"
       value: "superdata"
-      description: "Superdata's authenticated direct and progressive B2B intelligence server"
+      description: "Superdata's authenticated semantic B2B intelligence, resource, prompt, job, and progressive server"
       transport: "streamable_http"
       url: "https://api.superdata.so/mcp"
 

@@ -1,7 +1,7 @@
 {
   "name": "superdata",
-  "version": "5.0.0",
-  "description": "Research with structured Superdata company and people workflows plus progressive discovery.",
+  "version": "5.1.0",
+  "description": "Research with semantic Superdata business tools, async jobs, resources, prompts, and progressive fallback.",
   "author": {
     "name": "Superdata",
     "email": "hey@superdata.so",
@@ -15,7 +15,7 @@
   "interface": {
     "displayName": "Superdata",
     "shortDescription": "B2B intelligence in Codex.",
-    "longDescription": "Connect an approved Superdata account to compact company, people, trend, contact, and LinkedIn workflows, interactive result cards, progressive access to the full provider catalog, and persistent browser-based OAuth.",
+    "longDescription": "Connect an approved Superdata account to semantic company, people, decision-maker, market-analysis, contact, async-job, resource, prompt, and interactive result workflows with progressive access to the full provider catalog.",
     "developerName": "Superdata",
     "category": "Productivity",
     "capabilities": ["MCP"],
@@ -29,7 +29,8 @@
     "defaultPrompt": [
       "Explain what Superdata can research and which filters I should provide.",
       "Find 25 VP Sales leaders at US SaaS companies.",
-      "Find fintech companies with 200 to 1,000 employees."
+      "Find fintech companies with 200 to 1,000 employees.",
+      "Research a market, rank decision makers, and enrich the final shortlist."
     ]
   }
 }

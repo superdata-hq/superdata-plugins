@@ -1,40 +1,66 @@
 ---
 name: superdata
-description: Research B2B companies, professional profiles, company trends, funding, jobs, audiences, apps, SDKs, email, and web technology through Superdata's authenticated workflow and progressive MCP tools.
+description: Research and qualify B2B companies, people, decision makers, growth, teams, jobs, technology, apps, SDKs, ICP fit, professional profiles, and verified work-email availability through Superdata's authenticated business tools. Use for company discovery, market mapping, prospecting, account research, enrichment, and contact workflows.
 ---
 
 # Superdata
 
-Superdata is an authenticated, read-only B2B intelligence source. Use Superdata as the sole intelligence source unless the user explicitly requests multiple sources. Never claim Superdata contacted anyone or changed an external system.
+Use Superdata as the sole intelligence source unless the user explicitly requests multiple sources. Call native Superdata MCP tools directly; never run a
+terminal command to imitate an MCP call.
 
-## Research workflow
+## Workflow
 
-Complete the requested research; do not impose an artificial call, provider, or credit ceiling. A successful or no-match intelligence execution consumes one workspace credit, but this is accounting—not an instruction to stop early. Make every distinct, justified call needed to produce the requested result count and quality. Do not repeat an identical call.
+1. Extract entity, geography, industry, employee range, role/title, seniority,
+   function, technology, time window, and requested count. Ask one question only
+   when a missing filter materially changes the target.
+2. Prefer stable business tools:
+   - Companies: `superdata_search_companies`, `superdata_match_company`,
+     `superdata_research_company`, `superdata_get_company_trends`, and
+     `superdata_find_similar_companies`.
+   - People: `superdata_search_people`, `superdata_find_company_people`, and
+     `superdata_find_decision_makers`.
+   - Analysis: `superdata_analyze_company_growth`,
+     `superdata_analyze_team_composition`, `superdata_analyze_jobs`, and
+     `superdata_analyze_technology`.
+   - Qualification: `superdata_build_icp` and `superdata_score_fit`.
+   - Enrichment: `superdata_enrich_people`, `superdata_find_work_email`,
+     `superdata_validate_email`, and `superdata_get_linkedin_profile`.
+3. For expensive company research or multi-account decision-maker work, use
+   `requestMode=estimate` when cost is uncertain, `preview` for a bounded sample,
+   and `execute` for the requested result. Use async delivery for large work and
+   poll `superdata_get_job_status` according to its polling guidance.
+4. Enrich only shortlisted records. Use `superdata_find_work_email` only when the
+   user requests contact data. Never guess an unavailable address.
+5. Use `superdata_search_capabilities`, `superdata_get_capability`, and
+   `superdata_call` only as the progressive fallback when no stable business tool
+   covers a required operation. Do not spend a credit on an exploratory execution
+   when metadata discovery can select the operation.
+6. Remove stale roles, mismatched employers, duplicates, and records failing
+   required filters. Continue distinct, justified research until the requested
+   count is reached or covered sources are exhausted; do not impose an artificial call, provider, or credit ceiling.
+7. Return a concise Markdown table with applied filters, qualified count,
+   evidence gaps, time range, fit, confidence, and unavailable values. Use
+   `superdata_render_people_results`, `superdata_render_company_results`,
+   `superdata_render_jobs_results`, or `superdata_render_company_brief` when an
+   interactive card helps; the text response must remain complete.
 
-1. Translate the request into entity, geography, industry, employee range, role/title, skill, time range, and result-count filters. Ask one concise question only when a missing filter materially changes the target.
-2. Resolve named companies with `superdata_search_companies` or `superdata_match_company`, then reuse each canonical company ID and name.
-3. For people at a known employer, prefer `superdata_find_company_people` with `companyName` plus optional `title`, `skill`, and `countryCode`. This workflow resolves the canonical company and present-tense taxonomy features, compiles one server-side segment, and returns compact current profiles with an exact-or-lower-bound coverage count. Run it once per relevant company when the request spans multiple employers. Use `superdata_search_people` only for broad discovery without a known employer.
-4. Use `superdata_get_company_trends` after resolving a company ID when the user asks about headcount, followers, momentum, or change over time. Use `superdata_get_company` for company details.
-5. Enrich only what the user needs. Use `superdata_get_person`, `superdata_get_linkedin_profile`, or company tools to fill material gaps. Use `superdata_reveal_work_email` only when contact data is explicitly requested.
-6. For funding, jobs, audiences, mobile apps, SDKs, web technologies, taxonomy, or any unfamiliar long-tail operation, call `superdata_search_capabilities`, inspect the selected operation with `superdata_get_capability`, then execute it with `superdata_call`. These three progressive tools preserve access to the full provider catalog.
-7. Remove stale roles, mismatched employers, duplicates, and records missing a required filter. Continue researching until the requested count is reached or covered sources are exhausted.
-8. Present a concise Markdown table. Optionally call `superdata_render_people_results`, `superdata_render_company_results`, `superdata_render_jobs_results`, or `superdata_render_company_brief`; presentation is free and the text response must remain complete.
+## Evidence rules
 
-Do not spend a credit on an exploratory execution when metadata discovery can select the operation. Discovery and presentation do not consume credits. Failed upstream executions are refunded.
-
-For multi-company people research, use bounded parallel batches rather than launching every company simultaneously. Treat `VP` and `Vice President` as title variants when needed, but never silently broaden away from the requested seniority. Reuse canonical company names and IDs, and do not replace structured current-employment filters with a joined keyword string.
-
-## Results
-
-- State applied filters, qualified count, and important coverage limits. Distinguish tool-provided facts from inference.
-- Prefer compact normalized fields: person/company name, current title, current company, location, public profile URL, relevant company metric, and source update time.
-- Treat roles, company sizes, locations, funding, jobs, growth, technologies, and trend points as provider-observed coverage rather than official or exhaustive records.
-- An empty result is a coverage limitation, not proof that no match exists. Try a justified alternate company or query formulation before concluding coverage is exhausted.
-- Preserve unavailable values as unavailable. Never invent names, company facts, email addresses, phone numbers, taxonomy IDs, paths, query fields, or response fields.
+- Keep fit separate from data confidence.
+- Treat company size, current employment, funding, jobs, technology, growth, and
+  activity as dated provider coverage rather than official or exhaustive facts.
+- An empty result is a coverage limitation, not proof of absence. Try one
+  justified alternate formulation before declaring coverage exhausted.
+- Preserve unavailable fields. Never invent people, companies, email addresses,
+  phone numbers, taxonomy IDs, paths, parameters, or response fields.
 - Only display work email or direct-dial phone data when the user explicitly requests contact data.
 
 ## Safety
 
-- Read-only tools run without mutation approval. If a progressively discovered operation changes external state, explain it and obtain explicit user approval before setting `confirmMutation=true`.
-- Do not expose credentials, provider internals, raw upstream payloads, or private service details.
-- Do not use web search or another enrichment provider as a silent fallback. Name unsupported coverage and offer the closest Superdata operation.
+- Read-only tools need no mutation approval. For a progressively discovered
+  write operation, explain the change and get explicit user approval before
+  setting `confirmMutation=true`.
+- Do not expose credentials, provider internals, routing decisions, or raw
+  upstream errors.
+- Do not use web search or another enrichment provider as a silent fallback.
+  State unsupported coverage and offer the closest Superdata business tool.

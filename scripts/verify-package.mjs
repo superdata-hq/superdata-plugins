@@ -46,7 +46,7 @@ assert(claudeCatalog.plugins[0]?.source === "./plugins/superdata", "Claude plugi
 assert(codexManifest.name === "superdata", "Unexpected Codex plugin name");
 assert(claudeManifest.name === "superdata", "Unexpected Claude plugin name");
 assert(codexManifest.version === claudeManifest.version, "Plugin versions must match");
-assert(codexManifest.version === "5.0.0", "Structured-workflow release must be version 5.0.0");
+assert(codexManifest.version === "5.1.0", "Semantic-workflow release must be version 5.1.0");
 assert(packageManifest.version === codexManifest.version, "Package and plugin versions must match");
 assert(claudeCatalog.plugins[0]?.version === claudeManifest.version, "Claude marketplace version must match");
 assert(codexManifest.repository === repository, "Codex repository is wrong");
@@ -81,8 +81,16 @@ for (const behavior of [
   "superdata_search_people",
   "superdata_search_companies",
   "superdata_find_company_people",
+  "superdata_find_decision_makers",
+  "superdata_research_company",
+  "superdata_enrich_people",
+  "superdata_find_work_email",
+  "superdata_analyze_company_growth",
+  "superdata_analyze_technology",
+  "superdata_build_icp",
+  "superdata_score_fit",
+  "superdata_get_job_status",
   "superdata_get_company_trends",
-  "superdata_reveal_work_email",
   "superdata_get_linkedin_profile",
   "superdata_render_people_results",
   "Do not spend a credit on an exploratory execution",

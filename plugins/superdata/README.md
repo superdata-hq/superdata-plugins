@@ -29,20 +29,29 @@ claude plugin marketplace add superdata-hq/superdata-plugins \
 
 Run `/reload-plugins`, open `/mcp`, connect Superdata, and use `/superdata:superdata` followed by your request.
 
-## Workflow tools and progressive fallback
+## Semantic business tools and progressive fallback
 
-- Compact typed tools cover common company, people, current-employment, company-trend, contact, and LinkedIn workflows directly.
-- `superdata_find_company_people` uses a structured current-employment pipeline: canonical company match, present-tense title/company/country taxonomy resolution, one server-side segment preview, and bounded profile enrichment. It returns an `eq` or `gte` coverage count instead of treating a page length as total coverage.
+- Thirty-five native tools cover company and people search, decision makers,
+  company briefs, growth, team composition, jobs, similar companies, technology,
+  apps/SDKs, ICP fit, enrichment, verified email workflows, async job status, and
+  interactive presentation.
+- Expensive company research and decision-maker workflows support free
+  `estimate`, bounded `preview`, and full `execute` modes. Large execution can
+  return a durable job for `superdata_get_job_status` to poll.
 - `superdata_search_capabilities`, `superdata_get_capability`, and `superdata_call` remain available as a progressive fallback for unfamiliar or newly released operations.
 - The progressive catalog retains every supported long-tail provider operation without loading more than one hundred raw schemas into each Codex task.
 - `superdata_render_people_results`, `superdata_render_company_results`, `superdata_render_jobs_results`, and `superdata_render_company_brief` provide interactive, non-billable result cards.
-- A successful or no-match intelligence execution consumes one workspace credit; a failed upstream request is refunded.
+- Direct calls consume one credit. Composed research reserves the published cost
+  range and reconciles actual spend; estimates, status, resources, prompts, and
+  presentation are free. Failed upstream work is refunded.
 - The skill does not impose an artificial call or credit ceiling: it continues with distinct, justified calls until the requested result count is reached or covered sources are exhausted.
 - OAuth requests offline access and serializes refresh-token rotation across concurrent calls, so a client that supports refresh tokens should need interactive authorization only once per installed connection.
 - Non-read-only operations require explicit user approval and `confirmMutation=true`.
 - Provider-observed results are dated coverage rather than official or exhaustive records.
 - Empty results are coverage limitations, not proof of absence.
 - Contact tools are used only when explicitly requested, and unavailable values are never guessed.
+- Versioned taxonomy, workspace, usage, and job-result resources plus five prompt
+  templates are discoverable through native MCP resource and prompt APIs.
 
 ## Direct MCP
 
