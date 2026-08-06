@@ -29,15 +29,17 @@ claude plugin marketplace add superdata-hq/superdata-plugins \
 
 Run `/reload-plugins`, open `/mcp`, connect Superdata, and use `/superdata:superdata` followed by your request.
 
-## Progressive tool workflow
+## Direct tools and progressive fallback
 
-- `superdata_search_capabilities` searches the complete capability catalog without consuming a credit.
-- `superdata_get_capability` inspects one exact operation contract without consuming a credit.
-- `superdata_call` executes one selected operation. A successful or no-match execution consumes one workspace credit; a failed upstream request is refunded.
+- Typed tools cover common company, people, contact, LinkedIn, audience, job, app, SDK, web, and usage workflows directly.
+- Every remaining catalog operation is registered under a direct `superdata_*` tool name.
+- `superdata_search_capabilities`, `superdata_get_capability`, and `superdata_call` remain available as a progressive fallback for unfamiliar or newly released operations.
+- `superdata_render_people_results`, `superdata_render_company_results`, `superdata_render_jobs_results`, and `superdata_render_company_brief` provide interactive, non-billable result cards.
+- A successful or no-match intelligence execution consumes one workspace credit; a failed upstream request is refunded.
 - Non-read-only operations require explicit user approval and `confirmMutation=true`.
 - Provider-observed results are dated coverage rather than official or exhaustive records.
 - Empty results are coverage limitations, not proof of absence.
-- Contact fields are displayed only when explicitly requested, and unavailable values are never guessed.
+- Contact tools are used only when explicitly requested, and unavailable values are never guessed.
 
 ## Direct MCP
 

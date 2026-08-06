@@ -1,7 +1,7 @@
 {
   "name": "superdata",
-  "version": "2.0.0",
-  "description": "Discover, inspect, and execute Superdata B2B intelligence capabilities.",
+  "version": "3.0.0",
+  "description": "Research with direct typed Superdata tools and progressive long-tail discovery.",
   "author": {
     "name": "Superdata",
     "email": "hey@superdata.so",
@@ -15,7 +15,7 @@
   "interface": {
     "displayName": "Superdata",
     "shortDescription": "B2B intelligence in Codex.",
-    "longDescription": "Connect an approved Superdata account to authenticated B2B intelligence through progressive capability discovery, contract inspection, controlled execution, and browser-based OAuth.",
+    "longDescription": "Connect an approved Superdata account to typed company, people, contact, LinkedIn, audience, app, SDK, and web intelligence tools, interactive result cards, progressive long-tail discovery, and browser-based OAuth.",
     "developerName": "Superdata",
     "category": "Productivity",
     "capabilities": ["MCP"],

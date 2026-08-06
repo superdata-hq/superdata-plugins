@@ -4,13 +4,13 @@
     "name": "Superdata",
     "email": "hey@superdata.so"
   },
-  "description": "Authenticated progressive B2B intelligence for Claude chat, Cowork, Claude Code, and Codex.",
+  "description": "Authenticated direct and progressive B2B intelligence for Claude chat, Cowork, Claude Code, and Codex.",
   "plugins": [
     {
       "name": "superdata",
       "source": "./plugins/superdata",
-      "description": "Discover and execute authenticated Superdata intelligence capabilities.",
-      "version": "2.0.0",
+      "description": "Use typed Superdata research tools, interactive results, and progressive long-tail discovery.",
+      "version": "3.0.0",
       "category": "Productivity"
     }
   ]

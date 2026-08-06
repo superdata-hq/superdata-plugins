@@ -1,14 +1,16 @@
 # Superdata plugins
 
-**Authenticated progressive B2B intelligence for Codex and Claude.**
+**Authenticated direct and progressive B2B intelligence for Codex and Claude.**
 
 Superdata connects an approved account to company, people, funding, jobs, audience, mobile-app, SDK, email, and web-technology intelligence through MCP. The public repository contains customer-safe plugins and no backend code, private data, customer credentials, OAuth tokens, or upstream credentials.
 
 ## What you get
 
-- `superdata_search_capabilities` to find the relevant operation without consuming a credit.
-- `superdata_get_capability` to inspect its exact contract without consuming a credit.
-- `superdata_call` to execute one selected operation; successful and no-match executions cost one workspace credit, while failed upstream requests are refunded.
+- Typed tools for common company, people, contact, LinkedIn, audience, job, app, SDK, and web workflows.
+- A direct `superdata_*` tool for every remaining catalog operation.
+- Interactive people, company, job, and company-brief result cards.
+- Progressive `superdata_search_capabilities`, `superdata_get_capability`, and `superdata_call` fallback for unfamiliar operations.
+- Successful and no-match intelligence executions cost one workspace credit; failed upstream requests are refunded. Discovery and presentation are free.
 - Browser-based OAuth sign-in to an approved, customer-scoped account.
 - Natural-language routing through the bundled Superdata skill.
 
