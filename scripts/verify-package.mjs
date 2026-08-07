@@ -36,6 +36,7 @@ const claudeManifest = await json("plugins/superdata/.claude-plugin/plugin.json"
 const packageManifest = await json("package.json");
 const codexMcp = await json("plugins/superdata/.mcp.json");
 const claudeMcp = claudeManifest.mcpServers;
+const codexSuperdataServer = codexMcp.mcpServers?.superdata;
 
 assert(codexCatalog.name === "superdata", "Unexpected Codex marketplace name");
 assert(claudeCatalog.name === "superdata", "Unexpected Claude marketplace name");
@@ -53,9 +54,17 @@ assert(codexManifest.repository === repository, "Codex repository is wrong");
 assert(claudeManifest.repository === repository, "Claude repository is wrong");
 assert(codexManifest.mcpServers === "./.mcp.json", "Codex MCP path is wrong");
 assert(claudeMcp && typeof claudeMcp === "object", "Claude MCP config is missing");
-assert(codexMcp.mcpServers?.superdata?.url === endpoint, "Unexpected Codex MCP endpoint");
-assert(codexMcp.mcpServers?.superdata?.auth === "oauth", "Codex must use OAuth");
-assert(!("bearer_token_env_var" in codexMcp.mcpServers.superdata), "Codex must not require an environment token");
+assert(codexMcp.mcpServers && typeof codexMcp.mcpServers === "object", "Codex MCP config must define mcpServers");
+assert(codexSuperdataServer && typeof codexSuperdataServer === "object", "Codex Superdata MCP server is missing");
+assert(
+  typeof codexSuperdataServer.url === "string" || typeof codexSuperdataServer.command === "string",
+  "Codex Superdata MCP server must define a transport",
+);
+assert(codexSuperdataServer.url === endpoint, "Unexpected Codex MCP endpoint");
+assert(codexSuperdataServer.auth === "oauth", "Codex must use OAuth");
+assert(codexSuperdataServer.type === "http", "Codex MCP transport type must be http");
+assert(codexSuperdataServer.http_headers?.["x-superdata-client"] === "Codex", "Codex client header is missing");
+assert(!("bearer_token_env_var" in codexSuperdataServer), "Codex must not require an environment token");
 assert(claudeMcp.superdata?.url === endpoint, "Unexpected Claude MCP endpoint");
 assert(!JSON.stringify(claudeMcp).match(/authorization/i), "Claude config must not contain authorization material");
 

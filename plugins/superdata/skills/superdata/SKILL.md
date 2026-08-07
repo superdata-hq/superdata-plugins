@@ -17,7 +17,8 @@ terminal command to imitate an MCP call.
    - Companies: `superdata_search_companies`, `superdata_match_company`,
      `superdata_research_company`, `superdata_get_company_trends`, and
      `superdata_find_similar_companies`.
-   - People: `superdata_search_people`, `superdata_find_company_people`, and
+   - People: `superdata_search_people`, `superdata_find_company_people`,
+     `superdata_find_employment_transitions`, and
      `superdata_find_decision_makers`.
    - Analysis: `superdata_analyze_company_growth`,
      `superdata_analyze_team_composition`, `superdata_analyze_jobs`, and
@@ -49,6 +50,11 @@ terminal command to imitate an MCP call.
 - Keep fit separate from data confidence.
 - Treat company size, current employment, funding, jobs, technology, growth, and
   activity as dated provider coverage rather than official or exhaustive facts.
+- For requests like "left X and joined Y", "moved from X to Y", "former X
+  employees now at Y", or "quit X after 2025", use
+  `superdata_find_employment_transitions` with company domain or LinkedIn
+  evidence when available. Do not use keyword people search for transition
+  counts.
 - An empty result is a coverage limitation, not proof of absence. Try one
   justified alternate formulation before declaring coverage exhausted.
 - Preserve unavailable fields. Never invent people, companies, email addresses,
