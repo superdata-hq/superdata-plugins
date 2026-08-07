@@ -100,6 +100,8 @@ for (const path of [
 
 const removedPaths = [
   [".agents", "plugins", "market" + "place.json"],
+  ["." + "codex-plugin", "plugin.json"],
+  ["." + "mcp.json"],
   ["." + "claude-plugin", "market" + "place.json"],
   ["plugins", "superdata", "." + "codex-plugin", "plugin.json"],
   ["plugins", "superdata", "." + "claude-plugin", "plugin.json"],
