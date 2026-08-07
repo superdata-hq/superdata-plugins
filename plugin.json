@@ -1,4 +1,5 @@
 {
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "superdata",
   "version": "5.1.0",
   "description": "Research with semantic Superdata business tools, async jobs, resources, prompts, and progressive fallback.",
@@ -9,14 +10,6 @@
   },
   "homepage": "https://superdata.so",
   "repository": "https://github.com/superdata-hq/superdata-plugins",
-  "keywords": ["b2b-data", "company-intelligence", "people-intelligence", "prospecting", "enrichment"],
-  "mcpServers": {
-    "superdata": {
-      "type": "http",
-      "url": "https://api.superdata.so/mcp",
-      "headers": {
-        "x-superdata-client": "Claude"
-      }
-    }
-  }
+  "license": "MIT",
+  "keywords": ["b2b-data", "company-intelligence", "people-intelligence", "prospecting", "enrichment"]
 }

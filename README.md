@@ -1,8 +1,8 @@
-# Superdata plugins
+# Superdata Agent Plugin
 
-**Authenticated workflow and progressive B2B intelligence for Codex and Claude.**
+**Authenticated workflow and progressive B2B intelligence for Agent Plugins-compatible clients.**
 
-Superdata connects an approved account to company, people, funding, jobs, audience, mobile-app, SDK, email, and web-technology intelligence through MCP. The public repository contains customer-safe plugins and no backend code, private data, customer credentials, OAuth tokens, or upstream credentials.
+Superdata connects an approved account to company, people, funding, jobs, audience, mobile-app, SDK, email, and web-technology intelligence through MCP. This repository is an Agent Plugins 1.0.0 package with a portable `plugin.json`, `mcp.json`, and `skills/` layout. It contains no backend code, private data, customer credentials, OAuth tokens, or upstream credentials.
 
 ## What you get
 
@@ -15,51 +15,42 @@ Superdata connects an approved account to company, people, funding, jobs, audien
   and five reusable research prompts.
 - Direct calls cost one credit; composed work reserves and reconciles its catalog
   range. Failed work is refunded, while discovery and presentation are free.
-- Browser-based OAuth sign-in with refresh-token support for an approved, customer-scoped account.
+- Client-managed authentication for an approved, customer-scoped account.
 - Natural-language routing through the bundled Superdata skill.
 
-## Codex desktop app and CLI
+## Install
 
-```sh
-codex plugin marketplace add superdata-hq/superdata-plugins --ref main \
-  && codex plugin add superdata@superdata \
-  && codex mcp login superdata
+Use an Agent Plugins-compatible client that supports Agent Skills and Streamable HTTP MCP servers. Add this repository as a plugin package, then enable the `superdata` plugin.
+
+The portable MCP configuration is:
+
+```json
+{
+  "mcpServers": {
+    "superdata": {
+      "type": "streamable-http",
+      "url": "https://api.superdata.so/mcp"
+    }
+  }
+}
 ```
 
-Complete browser sign-in, fully reopen Codex, and start a new task. Select Superdata or ask:
+Complete the client-managed Superdata sign-in flow if your client prompts for authentication, then start a new task and ask:
 
 > Use Superdata to find UK cybersecurity companies with 50 to 500 employees.
 
-## Claude Desktop and Cowork
+## Authentication
 
-Add `https://github.com/superdata-hq/superdata-plugins` as a plugin marketplace, install Superdata, connect its MCP server, complete browser sign-in, and start a new chat.
-
-## Claude Code CLI
-
-```sh
-claude plugin marketplace add superdata-hq/superdata-plugins \
-  && claude plugin install superdata@superdata
-```
-
-Run `/reload-plugins`, open `/mcp`, connect Superdata, and start a new session.
-
-## Update the plugin
-
-```sh
-codex plugin marketplace upgrade superdata \
-  && codex plugin add superdata@superdata
-```
-
-For Claude Code, run `claude plugin marketplace update superdata` and `claude plugin update superdata@superdata`. Start a new task or session after every update.
+Agent Plugins 1.0.0 does not define portable OAuth or credential-reference fields in `mcp.json`. Authentication is handled by the compatible client and the hosted Superdata MCP server. Do not add bearer tokens, OAuth refresh tokens, or API keys to this repository.
 
 ## Direct MCP connection
 
-The plugin is recommended because it bundles both the MCP connection and Superdata routing guidance. Advanced users can connect directly to `https://api.superdata.so/mcp` and then complete OAuth sign-in.
+The plugin is recommended because it bundles both the MCP connection and Superdata routing guidance. Advanced users can connect directly to `https://api.superdata.so/mcp` in an MCP-capable client and then complete the client-managed sign-in flow.
 
 ## Troubleshooting
 
-- If the skill appears but tools do not, complete `codex mcp login superdata`, fully restart Codex, and use a new task.
-- If OAuth fails, verify both authorization-server metadata URL shapes advertise the same compatibility contract.
+- If the skill appears but tools do not, verify that your client loaded `mcp.json` and supports Streamable HTTP MCP.
+- If sign-in fails, verify both authorization-server metadata URL shapes advertise the same compatibility contract.
 - If a request returns no data, broaden one filter at a time and treat the result as a coverage limitation.
 
 Never put an API key or OAuth token in a repository, issue, prompt, screenshot, analytics event, documentation file, or URL.
