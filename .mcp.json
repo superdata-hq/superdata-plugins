@@ -1,0 +1,12 @@
+{
+  "mcpServers": {
+    "superdata": {
+      "type": "http",
+      "url": "https://api.superdata.so/mcp",
+      "auth": "oauth",
+      "http_headers": {
+        "x-superdata-client": "Codex"
+      }
+    }
+  }
+}

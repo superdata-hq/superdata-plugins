@@ -54,8 +54,12 @@ async function textFiles(directory) {
 
 const plugin = await json("plugin.json");
 const mcp = await json("mcp.json");
+const codexCatalog = await json(".agents/plugins/marketplace.json");
+const codexManifest = await json(".codex-plugin/plugin.json");
+const codexMcp = await json(".mcp.json");
 const packageManifest = await json("package.json");
 const superdataServer = mcp.mcpServers?.superdata;
+const codexSuperdataServer = codexMcp.mcpServers?.superdata;
 
 assertKeys(plugin, pluginTopLevelFields, "plugin.json");
 assert(plugin.$schema === pluginSchema, "plugin.json must target Agent Plugins 1.0.0");
@@ -71,6 +75,18 @@ assert(plugin.author && typeof plugin.author === "object" && !Array.isArray(plug
 assertKeys(plugin.author, new Set(["name", "email", "url"]), "plugin.json author");
 assert(plugin.author.name === "Superdata", "Author name is wrong");
 
+assert(codexCatalog.name === "superdata", "Unexpected Codex marketplace name");
+assert(codexCatalog.plugins?.length === 1, "Codex marketplace must contain one plugin");
+assert(codexCatalog.plugins[0]?.name === "superdata", "Codex marketplace plugin name is wrong");
+assert(codexCatalog.plugins[0]?.source?.path === "./", "Codex plugin path must point at the repository root");
+assert(codexCatalog.plugins[0]?.policy?.installation === "AVAILABLE", "Codex plugin must be installable");
+assert(codexManifest.name === plugin.name, "Codex plugin name must match Agent Plugins name");
+assert(codexManifest.version === plugin.version, "Codex plugin version must match Agent Plugins version");
+assert(codexManifest.repository === repository, "Codex repository is wrong");
+assert(codexManifest.skills === "./skills/", "Codex skills path is wrong");
+assert(codexManifest.mcpServers === "./.mcp.json", "Codex MCP path is wrong");
+assert(codexManifest.interface?.displayName === "Superdata", "Codex display name is missing");
+
 assertKeys(mcp, new Set(["$schema", "mcpServers"]), "mcp.json");
 assert(mcp.$schema === mcpSchema, "mcp.json must target Agent Plugins MCP 1.0.0");
 assert(mcp.mcpServers && typeof mcp.mcpServers === "object" && !Array.isArray(mcp.mcpServers), "mcpServers must be an object");
@@ -85,9 +101,20 @@ assert(
 );
 assert(!JSON.stringify(mcp).match(/auth|oauth|authorization|bearer|token|secret|http_headers/i), "mcp.json must not contain auth or credential fields");
 
+assert(codexMcp.mcpServers && typeof codexMcp.mcpServers === "object", "Codex MCP config must define mcpServers");
+assert(codexSuperdataServer && typeof codexSuperdataServer === "object", "Codex Superdata MCP server is missing");
+assert(codexSuperdataServer.type === "http", "Codex MCP transport type must be http");
+assert(codexSuperdataServer.url === endpoint, "Unexpected Codex MCP endpoint");
+assert(codexSuperdataServer.auth === "oauth", "Codex must use OAuth");
+assert(codexSuperdataServer.http_headers?.["x-superdata-client"] === "Codex", "Codex client header is missing");
+assert(!("bearer_token_env_var" in codexSuperdataServer), "Codex plugin install must not require an environment token");
+
 for (const path of [
   "plugin.json",
   "mcp.json",
+  ".agents/plugins/marketplace.json",
+  ".codex-plugin/plugin.json",
+  ".mcp.json",
   "README.md",
   "LICENSE",
   "SECURITY.md",
@@ -99,9 +126,6 @@ for (const path of [
 }
 
 const removedPaths = [
-  [".agents", "plugins", "market" + "place.json"],
-  ["." + "codex-plugin", "plugin.json"],
-  ["." + "mcp.json"],
   ["." + "claude-plugin", "market" + "place.json"],
   ["plugins", "superdata", "." + "codex-plugin", "plugin.json"],
   ["plugins", "superdata", "." + "claude-plugin", "plugin.json"],
